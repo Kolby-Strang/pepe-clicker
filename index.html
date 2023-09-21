@@ -1,0 +1,188 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Own Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- header -->
+    <header class="d-flex space-between">
+      <img src="images/frogLogo.png" alt="pepe logo">
+      <h1 class="align-self-center">$
+        <span id="money">0</span>
+      </h1>
+
+        <button class="settingsButton" id="settingsButton" onclick="settingsMenuOpen()">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </button>
+        <button class="closeButton hidden" id="closeButton" onclick="settingsMenuClose()">
+          <i class="fa fa-times fa-3x" aria-hidden="true"></i>
+        </button>
+    </header>
+    
+
+    <!-- Main Game -->
+    <div id="game" class="game">
+
+      <div id="coinContainer" class="coinContainer">
+        <img src="images/pepeCoin.png" alt="click me!" onclick="clicked()" id="coin" class="coin">
+      </div>
+
+        <div class="shop">
+
+          <div class="multipliers">
+            <button id="1" style="border-color: #ffffff;" onclick="multiChange(1)">x1</button>
+            <button id="10" onclick="multiChange(10)">x10</button>
+            <button id="100" onclick="multiChange(100)">x100</button>
+          </div>
+
+
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/pepeHelper.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Pepe Helper  
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">+$1/click</span></i>
+                  </strong>
+                  <p>He tries his best</p>
+                  <p>Owned: <span id="pepeCount">0</span></p>
+                </div>
+              </div>
+            <button onclick="buyPepe()">$<span id="pepePrice">10</span></button>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/autoPepe.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Auto Pepe  
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">+$1/sec</span></i>
+                  </strong>
+                  <p>Crypto miner</p>
+                  <p>Owned: <span id="autoCount">0</span></p>
+                </div>
+              </div>
+              <button onclick="buyAuto()">$<span id="autoPrice">100</span></button>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/gigaPepe.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Giga Pepe
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">+$20/sec</span></i>
+                  </strong>
+                  <p>Jim 2x/day</p>
+                  <p>Owned: <span id="gigaCount">0</span></p>
+                </div>
+              </div>
+              <button onclick="buyGiga()">$<span id="gigaPrice">1000</span></button>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/gamerPepe.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Gamer Pepe
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">+$100/sec</span></i>
+                  </strong>
+                  <p>Prof. Minecraft</p>
+                  <p>Owned: <span id="gamerCount">0</span></p>
+                </div>
+              </div>
+              <button onclick="buyGamer()">$<span id="gamerPrice">1000</span></button>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/businessPepe.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Busi-Pepe
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">+$1000/sec</span></i>
+                  </strong>
+                  <p>Capitaliser.</p>
+                  <p>Owned: <span id="businessCount">0</span></p>
+                </div>
+              </div>
+              <button onclick="buyBusiness()">$<span id="businessPrice">1000</span></button>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <img src="images/jesusPepe.png" alt="pepe">
+                <div class="card-info">
+                  <strong>
+                    Pepe Jesus
+                    <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText">5x Cash</span></i>
+                  </strong>
+                  <p>Morale Boost, lol</p>
+                  <p>Owned: <span id="jesusCount">0</span></p>
+                </div>
+              </div>
+              <button onclick="buyJesus()">$<span id="jesusPrice">1000</span></button>
+            </div>
+          
+        </div>
+
+        <div id="fire" class="fire"></div>
+    </div>
+
+
+
+
+    <!-- Settings/Rebirth Menu -->
+    <div id="settingsMenu" class="settingsMenu hidden">
+      <div class="rebirthBox">
+        <h1>
+          REBIRTH
+          <i class="fa fa-info-circle tooltip" aria-hidden="true"><span class="tooltipText wide"><em><strong>x1.1/rebirth</strong></em> boost in all earnings.</span></i>
+        </h1>
+        <p>Rebirthing resets all of your progress.</p>
+        <br>
+        <p>Rebirths are <em>compounding,</em> meaning that each rebirth you earn is more valuable than the last.</p>
+
+        <p>Owned: <span id="rebirthCount">0</span></p>
+        <br>
+        <p>You need to be earning <span id="rebirthCost">0</span>/second to be able to rebirth.</p>
+        <p>You are earning <span id="cashPerSec">0</span>/second</p>
+        <button class="rebirthButton" id="rebirthButton" onclick="requestRebirth()">Rebirth</button>
+      </div>
+
+      <div class="settingsBox">
+
+        <h1>SETTINGS</h1>
+
+        <button class="resetProgressButton hidden" id="resetConfirm" onclick="confirmReset()">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <strong>ARE YOU SURE?</strong>
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <strong>CLICK AGAIN TO CONFIRM</strong>
+        </button>
+        <button class="resetProgressButton" id="resetProgressButton" onclick="initializeReset()">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <strong>PROGRESS RESET</strong>
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        </button>
+
+        <h2>Stop/Start All workers</h2>
+        <button class="pause" id="timerDisable" onclick="disableInterval()">
+          <i class="fa fa-stop fa-4x" aria-hidden="true"></i>
+        </button>
+        <button class="play hidden" id="timerEnable" onclick="enableInterval()">
+          <i class="fa fa-play fa-4x" aria-hidden="true"></i>        
+        </button>
+
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
